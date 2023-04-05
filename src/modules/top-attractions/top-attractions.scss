@@ -1,0 +1,52 @@
+
+.top-attractions {
+    @include mBottom(100px, 130px, $mobile-sm, $tablets, 130px);
+    @include mTop(30px, 40px, $mobile-sm, $tablets, 40px);
+
+    &__row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 50px;
+        @include tablets {
+            grid-template-columns: 1fr 1fr;
+        }
+        @include mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__title {
+        margin-bottom: 30px;
+
+    }
+
+    &__card {
+        &-item {
+            min-height: 190px;
+
+        }
+
+        &-title {
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        &-description {
+            margin-bottom: 10px;
+        }
+
+        &-read {
+            text-align: right;
+
+            &:after {
+                content: "";
+                vertical-align: middle;
+                display: inline-block;
+                margin-left: 11px;
+                background: url("../images/arrow.svg") no-repeat;
+                width: 24px;
+                height: 14px;
+            }
+        }
+    }
+}

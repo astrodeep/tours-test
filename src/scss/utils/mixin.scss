@@ -1,0 +1,239 @@
+@mixin tablets {
+    @media (max-width: #{$tablets}) {
+        @content;
+    }
+}
+
+
+@mixin mobile {
+    @media (max-width: #{$mobile}) {
+        @content;
+    }
+}
+
+
+@mixin tabletsPad {
+    @media (max-width: #{$tabletsPad}) {
+        @content;
+    }
+}
+
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+@function calcFluidFontSize($f-min, $f-max, $w-min, $w-max, $units: px) {
+    $f-min: strip-unit($f-min);
+    $f-max: strip-unit($f-max);
+    $w-min: strip-unit($w-min);
+    $w-max: strip-unit($w-max);
+
+    $k: ($f-max - $f-min)/($w-max - $w-min);
+    $b: $f-min - $k * $w-min;
+
+    $b: $b + $units;
+
+    @return calc(#{$k} * 100vw + #{$b});
+}
+
+@mixin fluidFontSize($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+    font-size: $f-min;
+
+    @media (min-width: $w-min) {
+        @if ($fallback) {
+            font-size: $fallback;
+        }
+        font-size: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+    }
+    @media (min-width: $w-max) {
+        font-size: $f-max;
+    }
+}
+
+@mixin fluidLineH($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+    line-height: $f-min;
+
+    @media (min-width: $w-min) {
+        @if ($fallback) {
+            line-height: $fallback;
+        }
+        line-height: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+    }
+    @media (min-width: $w-max) {
+        line-height: $f-max;
+    }
+}
+
+@mixin gridGap($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+    grid-gap: $f-min;
+
+    @media (min-width: $w-min) {
+        @if ($fallback) {
+            grid-gap: $fallback;
+        }
+        grid-gap: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+    }
+    @media (min-width: $w-max) {
+        grid-gap: $f-max;
+    }
+}
+
+@mixin pBottom($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+    padding-bottom: $f-min;
+
+    @media (min-width: $w-min) {
+        @if ($fallback) {
+            padding-bottom: $fallback;
+        }
+        padding-bottom: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+    }
+    @media (min-width: $w-max) {
+        padding-bottom: $f-max;
+    }
+}
+
+@mixin pRight($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+    padding-right: $f-min;
+
+    @media (min-width: $w-min) {
+        @if ($fallback) {
+            padding-right: $fallback;
+        }
+        padding-right: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+    }
+    @media (min-width: $w-max) {
+        padding-right: $f-max;
+    }
+}
+
+@mixin pTop($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+    padding-top: $f-min;
+
+    @media (min-width: $w-min) {
+        @if ($fallback) {
+            padding-top: $fallback;
+        }
+        padding-top: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+    }
+    @media (min-width: $w-max) {
+        padding-top: $f-max;
+    }
+}
+
+@mixin pLeft($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+    padding-left: $f-min;
+
+    @media (min-width: $w-min) {
+        @if ($fallback) {
+            padding-left: $fallback;
+        }
+        padding-left: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+    }
+    @media (min-width: $w-max) {
+        padding-left: $f-max;
+    }
+}
+
+@mixin mBottom($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+    margin-bottom: $f-min;
+
+    @media (min-width: $w-min) {
+        @if ($fallback) {
+            margin-bottom: $fallback;
+        }
+        margin-bottom: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+    }
+    @media (min-width: $w-max) {
+        margin-bottom: $f-max;
+    }
+}
+
+@mixin mLeft($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+    margin-left: $f-min;
+
+    @media (min-width: $w-min) {
+        @if ($fallback) {
+            margin-left: $fallback;
+        }
+        margin-left: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+    }
+    @media (min-width: $w-max) {
+        margin-left: $f-max;
+    }
+}
+
+@mixin mRight($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+    margin-right: $f-min;
+
+    @media (min-width: $w-min) {
+        @if ($fallback) {
+            margin-right: $fallback;
+        }
+        margin-right: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+    }
+    @media (min-width: $w-max) {
+        margin-right: $f-max;
+    }
+}
+
+
+@mixin minHeight($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+    min-height: $f-min;
+
+    @media (min-width: $w-min) {
+        @if ($fallback) {
+            min-height: $fallback;
+        }
+        min-height: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+    }
+    @media (min-width: $w-max) {
+        min-height: $f-max;
+    }
+}
+
+
+@mixin mTop($f-min, $f-max, $w-min, $w-max, $fallback: false) {
+
+    margin-top: $f-min;
+
+    @media (min-width: $w-min) {
+        @if ($fallback) {
+            margin-top: $fallback;
+        }
+        margin-top: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+    }
+    @media (min-width: $w-max) {
+        margin-top: $f-max;
+    }
+}
+
+@function max($numbers...) {
+    @return m#{a}x(#{$numbers})
+}
+
+@function min($numbers...) {
+    @return m#{i}n(#{$numbers})
+}
+
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}

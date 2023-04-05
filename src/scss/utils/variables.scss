@@ -1,0 +1,18 @@
+//font
+$font-base: 'Roboto', sans-serif;
+/* Colors */
+$colors: (
+    base: (
+        light: #fff,
+        purple: #200E32,
+        blue:#0662BA,
+        blueLight:#75CDFF,
+        blueSoft:#D6E3FC
+    ),
+);
+$mobile: 767px;
+$mobile-sm: 375px;
+$tablets: 1367px;
+$tabletsPad: 1160px;
+$radius: 14px;
+$radius-circle: 500px;

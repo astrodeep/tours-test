@@ -1,0 +1,7 @@
+@function getcolor($color, $tone: '') {
+    @if $tone != '' {
+        @return map-get(map-get($colors, $color), $tone);
+    } @else {
+        @return map-get($colors, $color);
+    }
+}

@@ -1,0 +1,10 @@
+///base
+@import 'src/scss/utils/fonts';
+@import 'src/scss/utils/reset';
+@import 'src/scss/utils/mixin';
+@import 'src/scss/utils/functions';
+@import 'src/scss/utils/variables';
+@import 'src/scss/base/base';
+
+/// modules
+@import 'src/modules/top-attractions/top-attractions';

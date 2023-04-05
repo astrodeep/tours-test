@@ -1,0 +1,227 @@
+html, body {
+    height: 100%;
+    font-family: $font-base;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: getcolor(base, purple);
+}
+
+
+%wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    @include tabletsPad {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
+
+.main-content {
+    /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+    flex: 1 0 auto;
+    @extend %wrapper;
+
+    word-break: break-word;
+}
+
+.header {
+    /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+    flex: 0 0 auto;
+    @extend %wrapper;
+    word-break: break-word;
+}
+
+.footer {
+    /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+    flex: 0 0 auto;
+    @extend %wrapper;
+    word-break: break-word;
+}
+
+.title {
+    @include fluidFontSize(30px, 40px, $mobile-sm, $tablets, 40px);
+    font-style: normal;
+    font-weight: 900;
+    @include fluidLineH(30px, 47px, $mobile-sm, $tablets, 47px);
+}
+
+
+.card {
+
+    &-item {
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        border-radius: 0px 20px;
+        flex-direction: column;
+    }
+
+    &-header {
+        padding-right: 20px;
+        padding-left: 20px;
+        display: flex;
+        padding-top: 20px;
+        align-items: center;
+        grid-gap: 10px;
+        justify-content: space-between;
+
+    }
+
+    &-footer {
+        margin-top: auto;
+        display: flex;
+        grid-gap: 10px;
+        align-items: center;
+        min-height: 54px;
+        border-radius: 0px 0px 0px 20px;
+        background: rgba(0, 0, 0, 0.5);
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    &-messages, &-like {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: getcolor(base, light);
+        line-height: 16px;
+    }
+
+    &-messages {
+        &:before {
+            content: "";
+            background: url("../images/messages.svg") no-repeat;
+            width: 15px;
+            height: 14px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+    }
+
+
+    &-like {
+        &:before {
+            content: "";
+            background: url("../images/like.svg") no-repeat;
+            width: 16px;
+            height: 14px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+    }
+
+
+    &-location {
+        margin-left: auto;
+    }
+
+
+    &-tg {
+        cursor: pointer;
+
+
+        &:hover path {
+            fill: getcolor(base, blueLight);
+        }
+    }
+
+    &-location {
+        &:before {
+            content: "";
+            background: url("../images/map.svg") no-repeat;
+            width: 9px;
+            height: 15px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+
+        }
+
+        &-href {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+            color: getcolor(base, light);
+            text-decoration-line: underline;
+        }
+    }
+
+
+    &-title {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 21px;
+    }
+
+    &-category {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        border-radius: 30px;
+        background: getcolor(base, blueSoft);
+        color: getcolor(base, blue);
+        padding: 6px 10px 6px 10px;
+
+    }
+
+    &-view {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        flex-shrink: 0;
+        color: getcolor(base, light);
+
+        &:before {
+            content: "";
+            background: url("../images/view.svg") no-repeat;
+            width: 18px;
+            height: 12px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+    }
+
+    &-description {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    &-read {
+        line-height: 19px;
+
+        &-href {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            text-decoration-line: underline;
+            color: getcolor(base, blue);
+        }
+
+    }
+}
